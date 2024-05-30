@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Daftar Mahasiswa</h1>
+    <h1 class="h2">Daftar Prodi</h1>
 </div>
 @if (session()->has('pesan'))
     <div class="alert alert-primary" role="alert">
@@ -11,7 +11,7 @@
     </div>
 @endif
 
-<a href="/dashboard-mahasiswa/create" class="btn btn-primary mb-3"><i class="bi bi-person-fill-add"></i>Create Mahasiswa</a>
+<a href="/dashboard-prodi/create" class="btn btn-primary mb-3"><i class="bi bi-person-fill-add"></i>Create Prodi</a>
 
 <table class="table table-bordered table-striped">
     <tr>

@@ -15,5 +15,5 @@
 
         @endforeach
     </table>
-{{-- {{ $prd->links() }} --}}
+{{ $prd->links() }}
 @endsection

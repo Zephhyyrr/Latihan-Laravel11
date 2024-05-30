@@ -6,6 +6,7 @@ use \App\Http\Controllers\DosenController;
 use \App\Http\Controllers\ProdiController;
 use \App\Http\Controllers\DashboardMahasiswaController;
 use \App\Http\Controllers\DashboardDosenController;
+use \App\Http\Controllers\DashboardProdiController;
 use \App\Http\Controllers\LoginController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -26,6 +27,7 @@ Route::get('/index-prodi',[ProdiController::class,'index']);
 // Route::get('/dashboard-mahasiswa',[DashboardMahasiswaController::class,'index']);
 Route::resource('/dashboard-mahasiswa',DashboardMahasiswaController::class)->middleware('auth');
 Route::resource('/dashboard-dosen',DashboardDosenController::class)->middleware('auth');
+Route::resource('/dashboard-prodi',DashboardProdiController::class)->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);

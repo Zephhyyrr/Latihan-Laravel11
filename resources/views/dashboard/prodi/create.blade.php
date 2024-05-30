@@ -3,26 +3,17 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Masukkan Data Mahasiswa</h1>
+    <h1 class="h2">Masukkan Data Prodi</h1>
 </div>
-<a href="/dashboard-mahasiswa/create" class="btn btn-primary mb-3">Create Mahasiswa</a>
+{{-- <a href="/dashboard-prodi/create" class="btn btn-primary mb-3">Create Prodi</a> --}}
 
-<form action="/dashboard-mahasiswa" method="POST">
+<form action="/dashboard-prodi" method="POST">
     @csrf
 
     <div class="mb-3">
-      <label for="inputNIM" class="form-label">NIM</label>
-      <input type="number" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{old('nim')}}">
-      @error('nim')
-          <div class="invalid-feedback">
-            {{$message}}
-          </div>
-      @enderror
-    </div>
-    <div class="mb-3">
-      <label for="inputNamaLengkap" class="form-label">Nama prodi</label>
-      <input type="text" class="form-control @error('nama_prdoi') is-invalid @enderror" name="nama_prodi" value="{{old('nama_prodi')}}">
-      @error('nama_lengkap')
+      <label for="inputNamaProdi" class="form-label">Nama Prodi</label>
+      <input type="text" class="form-control @error('nama_prodi') is-invalid @enderror" name="nama_prodi" value="{{old('nama_prodi')}}">
+      @error('nama_prodi')
           <div class="invalid-feedback">
             {{$message}}
           </div>
