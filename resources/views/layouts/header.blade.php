@@ -22,7 +22,10 @@
                 <a class="nav-link {{ Request::is('index-dosen') ? 'active' : ''}}" href="/index-dosen">Dosen</a>
               </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('index-prodi') ? 'active' : ''}}" href="/index-prodi">prodi</a>
+                <a class="nav-link {{ Request::is('index-prodi') ? 'active' : ''}}" href="/index-prodi">Prodi</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('index-berita') ? 'active' : ''}}" href="/index-berita">Berita</a>
               </li>
           </ul>
           {{-- <form class="d-flex" role="search">

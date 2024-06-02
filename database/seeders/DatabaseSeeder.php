@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Dosen;
-use App\Models\Mahasiswa;
 use App\Models\User;
+use App\Models\Dosen;
+use App\Models\Berita;
+// use App\Models\Kategori;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Mahasiswa;
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +20,11 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
+        \App\Models\user::create([
+            'name'=>'Admin',
+            'email'=>'admin@example.com',
+            'password'=>'1',
+        ]);
         \App\Models\Prodi::create([
             'nama_prodi'=>'TRPL'
         ]);
@@ -27,8 +35,25 @@ class DatabaseSeeder extends Seeder
             'nama_prodi'=>'TKOM'
         ]);
 
+        \App\Models\Kategori::create([
+            'nama'=>'Politik',
+        ]);
+        \App\Models\Kategori::create([
+            'nama'=>'Teknologi',
+        ]);
+        \App\Models\Kategori::create([
+            'nama'=>'Bisnis',
+        ]);
+        \App\Models\Kategori::create([
+            'nama'=>'Cuaca',
+        ]);
+        \App\Models\Kategori::create([
+            'nama'=>'Negara',
+        ]);
+
         Mahasiswa::factory(10)->create();
         Dosen::factory(10)->create();
+        Berita::factory(50)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
