@@ -20,7 +20,7 @@ class BeritaFactory extends Factory
             'title'=>fake()->sentence(mt_rand(4,8)),
             'user_id'=>(mt_rand(1,5)),
             'kategori_id'=>(mt_rand(1,5)),
-            'file_upload'=>'img_default.jpg',
+            'file_upload'=>'image_default.jpg',
             'excerpt'=>fake()->paragraph(mt_rand(6,8)),
             'body'=>fake()->paragraph(mt_rand(8,12)),
         ];

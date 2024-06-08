@@ -22,8 +22,9 @@
                 </div>
 
                 <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-body-secondary text-center">&copy; {{ date('Y') }}</p>
-            </form>
+                </form>
+            <p class="mt-5 mb-3 text-body-secondary text-center">Do not have an account?<a href="/register">Register Here</a></p>
+            <p class="mt-5 mb-3 text-body-secondary text-center">&copy; {{ date('Y') }}</p>
         </main>
     </div>
 </div>
