@@ -24,7 +24,7 @@ class DashboardBeritaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.berita.create',['kategoris'=>Kategori::all()]);
+        return view('dashboard.berita.create', ['kategoris' => Kategori::all()]);
     }
 
     /**
@@ -32,21 +32,21 @@ class DashboardBeritaController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate([
-            'title'=>'required',
-            'kategori_id'=>'required',
-            'file_upload'=>'nullable|image|mimes:png,jpg',
-            'body'=>'required',
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'kategori_id' => 'required',
+            'file_upload' => 'nullable|image|mimes:png,jpg',
+            'body' => 'required',
         ]);
-        if($request->hasFile('file_upload')){
-            $namaFile='img_'.time().'_'.$request->file_upload->getClientOriginalName();
-            $request->file_upload->move('images',$namaFile);
-        }else{
-            $namaFile='image_default.jpg';
+        if ($request->hasFile('file_upload')) {
+            $namaFile = 'img_' . time() . '_' . $request->file_upload->getClientOriginalName();
+            $request->file_upload->move('images', $namaFile);
+        } else {
+            $namaFile = 'image_default.jpg';
         }
-        $validatedData['file_upload']=$namaFile;
-        $validatedData['user_id']=auth()->user()->id;
-        $validatedData['excerpt']=Str::limit(strip_tags($request->body),50);
+        $validatedData['file_upload'] = $namaFile;
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 50);
         Berita::create($validatedData);
         return redirect('dashboard-berita');
     }
@@ -64,22 +64,46 @@ class DashboardBeritaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('dashboard.berita.edit', [
+            'kategoris' => Kategori::all(),
+            'berita' => Berita::find($id)
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'kategori_id' => 'required',
+            'file_upload' => 'nullable|image|mimes:png,jpg',
+            'body' => 'required',
+        ]);
+        $berita = Berita::find($id);
+        if ($request->hasFile('file_upload')) {
+            $namaFile = 'img_' . time() . '_' . $request->file_upload->getClientOriginalName();
+            $request->file_upload->move('images', $namaFile);
+            $validatedData['file_upload'] = $namaFile;
+        } else {
+            $validatedData['file_upload'] = $berita->file_upload;
+        }
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 50);
+        $berita->update($validatedData);
+        return redirect('dashboard-berita');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        Berita::destroy($id);
+        return redirect('dashboard-berita')->with('pesan','Data berita berhasil dihapus');
     }
 }
