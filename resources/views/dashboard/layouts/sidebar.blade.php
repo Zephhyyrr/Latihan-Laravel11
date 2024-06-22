@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="/dashboard-prodi">
+                    <a class="nav-link d-flex align-items-center gap-2" href="/dashboard-kategori">
                         <i class="bi bi-list-task"></i>
                         Kategori
                     </a>

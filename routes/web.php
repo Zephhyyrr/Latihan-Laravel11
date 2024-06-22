@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardUserController;
 use \App\Http\Controllers\DashboardDosenController;
 use \App\Http\Controllers\DashboardProdiController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\DashboardKategoriController;
 use \App\Http\Controllers\DashboardMahasiswaController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -37,6 +38,7 @@ Route::resource('/dashboard-dosen',DashboardDosenController::class)->middleware(
 Route::resource('/dashboard-prodi',DashboardProdiController::class)->middleware('auth');
 Route::resource('/dashboard-berita',DashboardBeritaController::class)->middleware('auth');
 Route::resource('/dashboard-user',DashboardUserController::class)->middleware('auth');
+Route::resource('/dashboard-kategori',DashboardKategoriController::class)->middleware('auth');
 Route::get('updateStatus/{id}', [DashboardUserController::class, 'updateStatus'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');

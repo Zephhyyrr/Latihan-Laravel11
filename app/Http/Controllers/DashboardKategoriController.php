@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prodi;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
-// use Illuminate\Routing\Controller;
 
-
-class DashboardProdiController extends Controller
+class DashboardKategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $prodis = Prodi::latest()->paginate(10);
-        return view('dashboard.prodi.index', ['prd' => $prodis]);
+        $kategoris = Kategori::latest()->paginate(10);
+        return view('dashboard.kategori.index',['kategoris' => $kategoris]);
     }
 
     /**
@@ -23,8 +21,7 @@ class DashboardProdiController extends Controller
      */
     public function create()
     {
-        return view('dashboard.prodi.create',['prodis'=>Prodi::all()]);
-
+        return view('dashboard.kategori.create',['prodis'=>Kategori::all()]);
     }
 
     /**
@@ -33,10 +30,10 @@ class DashboardProdiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama_prodi' => 'required',
+            'nama' => 'required',
         ]);
-        Prodi::create($validated);
-        return redirect('dashboard-prodi')->with('Prodi berhasil dibuat');
+        Kategori::create($validated);
+        return redirect('dashboard-kategori')->with('Kategori berhasil dibuat');
     }
 
     /**
@@ -52,8 +49,7 @@ class DashboardProdiController extends Controller
      */
     public function edit(string $id)
     {
-        return view('dashboard.prodi.edit',['prd'=>Prodi::find($id)]);
-
+        return view ('dashboard.kategori.edit' ,['kategoris'=>Kategori::find($id)]);
     }
 
     /**
@@ -62,10 +58,10 @@ class DashboardProdiController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'nama_prodi' => 'required',
+            'nama' => 'required',
         ]);
-        Prodi::where('id',$id)->update($validated);
-        return redirect('dashboard-prodi')->with('Berhasil Edit Prodi');
+        Kategori::where('id',$id)->update($validated);
+        return redirect('dashboard-kategori')->with('Berhasil Edit Kategori');
     }
 
     /**
@@ -73,7 +69,7 @@ class DashboardProdiController extends Controller
      */
     public function destroy(string $id)
     {
-        Prodi::destroy($id);
-        return redirect('dashboard-prodi')->with('pesan','Data berhasil terhapus');
+        Kategori::destroy($id);
+        return redirect ('dashboard-kategori')->with('pesan','Kategori berhasil dihapus');
     }
 }
