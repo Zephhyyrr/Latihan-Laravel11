@@ -12,7 +12,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $brt = Berita::orderBy('id','asc')->paginate(9);
+        $brt = Berita::latest()->pencarian()->paginate(9);
         return view ('berita.index',['beritas'=>$brt]);
     }
 

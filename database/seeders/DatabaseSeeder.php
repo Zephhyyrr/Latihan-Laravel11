@@ -8,6 +8,7 @@ use App\Models\Berita;
 // use App\Models\Kategori;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Mahasiswa;
+use Illuminate\Support\Str;
 use Carbon\Traits\Timestamp;
 use Illuminate\Database\Seeder;
 
@@ -20,10 +21,13 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
-        \App\Models\user::create([
+        User::create([
             'name'=>'Admin',
             'email'=>'admin@example.com',
             'password'=>'1',
+            'status'=>'active',
+            'email_verified_at'=>now(),
+            'remember_token'=>Str::random(10),
         ]);
         \App\Models\Prodi::create([
             'nama_prodi'=>'TRPL'

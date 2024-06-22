@@ -15,7 +15,7 @@ class DashboardBeritaController extends Controller
      */
     public function index()
     {
-        $beritas = Berita::orderBy('id', 'asc')->paginate(10);
+        $beritas = Berita::latest()->paginate(10);
         return view('dashboard.berita.index', ['beritas' => $beritas]);
     }
 

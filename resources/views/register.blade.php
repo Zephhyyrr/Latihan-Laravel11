@@ -28,9 +28,20 @@
                         @enderror
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" name="password" id="floatingPassword"
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="floatingPassword"
                             placeholder="Password">
                         <label for="floatingPassword">Password</label>
+                        @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="password" class="form-control" name="password_confirmation" id="floatingPassword"
+                            placeholder="Password">
+                        <label for="floatingPassword"> Confirm Password</label>
                     </div>
 
                     <img src="{{ captcha_src('math') }}" alt="captcha">

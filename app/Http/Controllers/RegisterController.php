@@ -18,7 +18,7 @@ class RegisterController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'password' => 'required',
+            'password' => ['required', 'confirmed', 'min:8'],
             'captcha' => 'required|captcha'
         ]);
 
@@ -26,6 +26,8 @@ class RegisterController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'status'=> 'aktif',
+            'email_verified_at' => now(),
         ]);
 
         return redirect('/login');

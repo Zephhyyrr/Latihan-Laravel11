@@ -21,7 +21,9 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *

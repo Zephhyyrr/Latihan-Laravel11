@@ -46,6 +46,12 @@
                         Kategori
                     </a>
                 </li>
+                <li class="nav-item {{ Request::is('user' ? 'active' : '') }}">
+                    <a class="nav-link d-flex align-items-center gap-2" href="/dashboard-user">
+                        <i class="bi bi-list-task"></i>
+                        User
+                    </a>
+                </li>
             </ul>
 
             {{-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">

@@ -7,6 +7,7 @@ use \App\Http\Controllers\ProdiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\RegisterController;
 use \App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DashboardUserController;
 use \App\Http\Controllers\DashboardDosenController;
 use \App\Http\Controllers\DashboardProdiController;
 use App\Http\Controllers\DashboardBeritaController;
@@ -35,6 +36,8 @@ Route::resource('/dashboard-mahasiswa',DashboardMahasiswaController::class)->mid
 Route::resource('/dashboard-dosen',DashboardDosenController::class)->middleware('auth');
 Route::resource('/dashboard-prodi',DashboardProdiController::class)->middleware('auth');
 Route::resource('/dashboard-berita',DashboardBeritaController::class)->middleware('auth');
+Route::resource('/dashboard-user',DashboardUserController::class)->middleware('auth');
+Route::get('updateStatus/{id}', [DashboardUserController::class, 'updateStatus'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);

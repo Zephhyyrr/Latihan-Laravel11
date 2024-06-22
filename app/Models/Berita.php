@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Berita extends Model
 {
@@ -18,5 +19,12 @@ class Berita extends Model
     public function kategori(): BelongsTo
     {
         return $this->belongsTo(Kategori::class);
+    }
+    public function scopePencarian(Builder $query): void
+    {
+        if (request('search')) {
+            $query->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('body','like','%' . request('search') . '%');
+        }
     }
 }
