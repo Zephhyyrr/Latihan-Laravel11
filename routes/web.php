@@ -34,6 +34,7 @@ Route::post('/register',[RegisterController::class,'store']);
 
 // Route::get('/dashboard-mahasiswa',[DashboardMahasiswaController::class,'index']);
 Route::resource('/dashboard-mahasiswa',DashboardMahasiswaController::class)->middleware('admin');
+Route::resource('/dashboard-mahasiswa',DashboardMahasiswaController::class)->middleware('auth');
 Route::resource('/dashboard-dosen',DashboardDosenController::class)->middleware('auth');
 Route::resource('/dashboard-prodi',DashboardProdiController::class)->middleware('auth');
 Route::resource('/dashboard-berita',DashboardBeritaController::class)->middleware('auth');
