@@ -48,7 +48,7 @@
                 </li>
                 <li class="nav-item {{ Request::is('user' ? 'active' : '') }}">
                     <a class="nav-link d-flex align-items-center gap-2" href="/dashboard-user">
-                        <i class="bi bi-list-task"></i>
+                        <i class="bi bi-person-circle"></i>
                         User
                     </a>
                 </li>
